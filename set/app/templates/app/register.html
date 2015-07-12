@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Set</title>
+	</head>
+
+	<body>
+		<h1>Register with Set</h1>
+		{% if registered %}
+		Thanks for <strong>registering!</strong>
+		{% else %}
+		Please <strong>register<a href="/set/register/">here!</a></strong><br/>
+		<form id="user_form" method="post" action="/set/register/" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			{{ user_form.as_p }}
+			{{ profile_form.as_p }}
+
+			<input type="submit" name="submit" value="Register" />
+		</form>
+		{% endif %}
+	</body>
+</html>

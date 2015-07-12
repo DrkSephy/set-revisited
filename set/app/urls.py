@@ -1,8 +1,9 @@
-from django.conf.urls import patterns, urls
+from django.conf.urls import patterns, url
 
 from app import views
 
-urlpatterns = pattern('',
+urlpatterns = patterns('',
 	url(r'^$', views.index, name='index'),
 	url(r'^login/$', views.userLogin, name='login'),
+	url(r'^register/$', views.register, name='register'),
 )
