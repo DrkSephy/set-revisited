@@ -1,3 +1,4 @@
 *.pyc
 bower_components/
 set/db.sqlite3
+*.DS_Store
