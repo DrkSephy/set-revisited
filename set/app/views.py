@@ -27,6 +27,20 @@ def register(request):
 
 	return render(request, 'app/register.html', {'user_form': user_form, 'registered': registered})
 
+def shopping(request):
+	items = [ 
+	{'name': 'JavaScript', 'quantity': 0, 'price': 9.99 },
+	{'name': 'Python', 'quantity': 0, 'price': 9.99 },
+	{'name': 'Swift', 'quantity': 0, 'price': 9.99 }
+	]
+	return render(request, 'app/shopping.html', {'items': items})
+
+def checkout(request):
+	if request.method == 'POST':
+		quantities = request.POST.getlist('quantity')
+		print quantities
+	return render(request, 'app/shopping.html', {'things': quantities})
+
 def user_login(request):
 	if request.method == 'POST':
 		username = request.POST.get('username')
