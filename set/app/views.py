@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from app.forms import UserForm
 from django.contrib.auth import authenticate, login
+from app.models import Product
 # Create your views here.
 
 
@@ -28,11 +29,7 @@ def register(request):
 	return render(request, 'app/register.html', {'user_form': user_form, 'registered': registered})
 
 def shopping(request):
-	items = [ 
-	{'name': 'JavaScript', 'quantity': 0, 'price': 9.99 },
-	{'name': 'Python', 'quantity': 0, 'price': 9.99 },
-	{'name': 'Swift', 'quantity': 0, 'price': 9.99 }
-	]
+	items = Product.objects.all()
 	return render(request, 'app/shopping.html', {'items': items})
 
 def checkout(request):
