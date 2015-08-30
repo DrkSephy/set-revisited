@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Set</title>
-	</head>
+    {% include 'app/base.html' %}
+    <link rel="stylesheet" href="/static/css/form.css">
+    <body>
+        {% if registered %}
+          <strong>Thank you for registering!</strong>
+          <a href="/set/">Return to the homepage.</a><br />
+        
+        {% else %}
+          <div class='container text-center'>
+              <h2 class="form-signin-heading">Sign Up</h2>
+              <br>
+              <form class="form-horizontal" id="user_form" method="post" action="/set/register/"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                {% load bootstrap %} 
 
-	<body>
-		<h1>Register with Set</h1>
-		{% if registered %}
-		Thanks for <strong>registering! Please login <a href="/set/login/">here!</a></strong>
-		{% else %}
-		Please <strong>register<a href="/set/register/">here!</a></strong><br/>
-		<form id="user_form" method="post" action="/set/register/" enctype="multipart/form-data">
-			{% csrf_token %}
+                <table>
+                  <tr>
+                     
+                      <td class="container text-center">{{ user_form.username | bootstrap_horizontal}}</td>
+                  </tr>
 
-			{{ user_form.as_p }}
-			{{ profile_form.as_p }}
+                  <tr>
+                     
+                      <td class="container text-center">{{ user_form.email | bootstrap_horizontal}}</td>
+                  </tr>
 
-			<input type="submit" name="submit" value="Register" />
-		</form>
-		{% endif %}
-	</body>
+                  <tr>
+                     
+                      <td class="container text-center">{{ user_form.password | bootstrap_horizontal}}</td>
+                  </tr>
+                </table>
+                <button class="btn btn-lg btn-primary" type="submit">Register</button>
+                <input type="hidden" name="submit" value="Register" />
+              </form>
+            </div>
+          {% endif %}
+    </body>
 </html>
