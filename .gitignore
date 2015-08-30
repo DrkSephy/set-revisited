@@ -2,4 +2,3 @@
 bower_components/
 set/db.sqlite3
 *.DS_Store
-set/app/static/
