@@ -18,3 +18,7 @@ class Product(models.Model):
 
     def __unicode__(self):
     	return str(self.price)
+
+class Vendor(models.Model):
+	name = models.CharField(max_length=50)
+	account = models.DecimalField(max_digits=6, decimal_places=2)
