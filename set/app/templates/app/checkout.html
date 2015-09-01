@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Set</title>
+	</head>
+
+	{% include 'app/base.html' %}
+
+    <style>
+      .form-signin {
+        max-width: 550px;
+        padding: 15px;
+        margin: 0 auto;
+      }
+    </style>
+
+	<body>
+    <div class="container text-center">
+        <form class="form-signin" id="login_form" method="post" action="/set/bank/" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% load bootstrap %}
+
+          {% if things %}
+            {% for item in things %}
+              {{ item }}
+            {% endfor %}
+          {% endif %}
+          <br>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Checkout?</button>
+          <input type="hidden" name="submit" value="submit" />
+        </form>
+    </div>
+	</body>
+</html>

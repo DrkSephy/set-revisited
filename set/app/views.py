@@ -36,7 +36,11 @@ def checkout(request):
 	if request.method == 'POST':
 		quantities = request.POST.getlist('quantity')
 		print quantities
-	return render(request, 'app/shopping.html', {'things': quantities})
+	return render(request, 'app/checkout.html', {'things': quantities})
+
+def bank(request):
+	if request.method == 'POST':
+		return HttpResponse('Need to serve the bank form')
 
 def user_login(request):
 	if request.method == 'POST':
