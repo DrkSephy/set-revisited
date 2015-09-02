@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Set</title>
+		<title>Bank Form</title>
 	</head>
 
 	{% include 'app/base.html' %}
@@ -20,11 +20,6 @@
           {% csrf_token %}
           {% load bootstrap %}
 
-          {% if things %}
-            {% for item in things %}
-              {{ item }}
-            {% endfor %}
-          {% endif %}
           <br>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Checkout?</button>
           <input type="hidden" name="submit" value="submit" />
