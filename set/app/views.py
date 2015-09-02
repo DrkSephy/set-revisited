@@ -39,8 +39,12 @@ def checkout(request):
 	return render(request, 'app/checkout.html', {'things': quantities})
 
 def bank(request):
+	data = {}
+	data['callback'] = '/set/callback/'
+	data['price'] = 9.99
 	if request.method == 'POST':
-		return HttpResponse('Need to serve the bank form')
+		print 'Need to serve the bank form'
+	return render(request, 'app/bank.html', {'vendor': data})
 
 def user_login(request):
 	if request.method == 'POST':
