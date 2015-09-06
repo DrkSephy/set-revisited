@@ -33,12 +33,34 @@ def shopping(request):
 	return render(request, 'app/shopping.html', {'items': items})
 
 def checkout(request):
+	# TODO:
+	# 	Send back array of quantities via POST request.
+	#   The array index of each value will denote the item from the database
+	#   i.e: index 0 will correspond to item 0 with pk=0, pk=1, etc
+
 	if request.method == 'POST':
 		quantities = request.POST.getlist('quantity')
 		print quantities
 	return render(request, 'app/checkout.html', {'things': quantities})
 
 def bank(request):
+	# TODO:
+	#   Pass vendor information into form
+	#   Form will have vendor section
+	#     - Callback URL to check account
+	#     - Summary of transaction
+	#   Bank form will have the usual details for user
+	#     - Card Name / Type
+	#     - Card Number
+	#     - Security Code
+	#     - Address 
+	#     - Account number (optional)
+	#   Show Summary of transaction to take place
+	#     - Items that are being bought
+	#     - Quantities of each item
+	#     - Description of each item
+	#     - Total price of items
+	
 	data = {}
 	data['callback'] = '/set/callback/'
 	data['price'] = 9.99
