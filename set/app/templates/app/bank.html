@@ -19,6 +19,13 @@
         <form class="form-signin" id="login_form" method="post" action="/set/checkout/" enctype="multipart/form-data">
           {% csrf_token %}
           {% load bootstrap %}
+          <h2> Vendor Information <h2>
+
+          <input type="text" name="vendor name" class="form-control" placeholder="Wes" value="Wes" required autofocus>
+
+          <br>
+
+          <h2> User Information <h2>
 
           <input type="text" name="name" class="form-control" placeholder="David Leonard" value="" required autofocus>
 
