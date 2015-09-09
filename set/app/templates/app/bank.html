@@ -27,13 +27,25 @@
 
           <h2> User Information <h2>
 
-          <input type="text" name="name" class="form-control" placeholder="David Leonard" value="" required autofocus>
+          <div>
+            <span style="float: left"> Card Holder Name </span> 
+            <input style="float: right" type="text" name="name" class="form-control" placeholder="David Leonard" value="David Leonard" required autofocus>
+          </div>
 
           <br>
           
-          <input type="text" name="card type" class="form-control" placeholder="Visa" value="" required autofocus>
+          <input type="text" name="card type" class="form-control" placeholder="Visa" value="Visa" required autofocus>
           
           <br>
+
+          <input type="text" name="card number" class="form-control" placeholder="0123 4567 8901 2345" value="0123 4567 8901 2345" required autofocus>
+
+          <br>
+
+          <input type="text" name="security code" class="form-control" placeholder="123" value="123" required autofocus>
+
+          <br>
+
           <button class="btn btn-lg btn-primary btn-block" type="submit">Confirm</button>
           <input type="hidden" name="submit" value="submit" />
         </form>

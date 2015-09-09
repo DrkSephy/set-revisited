@@ -53,7 +53,6 @@ def bank(request):
 	#     - Card Number
 	#     - Security Code
 	#     - Address 
-	#     - Account number (optional)
 	#   Show Summary of transaction to take place
 	#     - Items that are being bought
 	#     - Quantities of each item
