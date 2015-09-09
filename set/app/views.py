@@ -1,8 +1,7 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from app.forms import UserForm
 from django.contrib.auth import authenticate, login
-from app.models import Product
-# Create your views here.
+from app.models import Product, Vendor
 
 
 def index(request):
