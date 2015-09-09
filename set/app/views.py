@@ -59,6 +59,8 @@ def bank(request):
 	#     - Description of each item
 	#     - Total price of items
 	
+	# The callback will be a page that displays the vendor attributes
+	# in order to check whether transactions went through
 	data = {}
 	data['callback'] = '/set/callback/'
 	data['price'] = 9.99
