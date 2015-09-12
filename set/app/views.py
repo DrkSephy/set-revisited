@@ -3,12 +3,6 @@ from app.forms import UserForm
 from django.contrib.auth import authenticate, login
 from app.models import Product, Vendor
 
-def index(request):
-	return HttpResponse('Hello user!')
-
-def userLogin(request):
-	print 'hello user'
-
 def register(request):
 	registered = False
 	if request.method == 'POST':
