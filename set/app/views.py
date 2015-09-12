@@ -3,7 +3,6 @@ from app.forms import UserForm
 from django.contrib.auth import authenticate, login
 from app.models import Product, Vendor
 
-
 def index(request):
 	return HttpResponse('Hello user!')
 
