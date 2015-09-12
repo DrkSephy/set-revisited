@@ -26,6 +26,24 @@ def register(request):
 
 	return render(request, 'app/register.html', {'user_form': user_form, 'registered': registered})
 
+def user_login(request):
+	if request.method == 'POST':
+		username = request.POST.get('username')
+		password = request.POST.get('password')
+
+		user = authenticate(username=username, password=password)
+		if user:
+			if user.is_active:
+				login(request, user)
+				return HttpResponseRedirect('/set/')
+			else:
+				return HttpResponse('Your Set account is disabled')
+		else:
+			print "Invalid login details: {0}, {1}".format(username, password)
+			return HttpResponse('Invalid login credentials')
+	else:
+		return render(request, 'app/login.html', {})
+
 def shopping(request):
 	items = Product.objects.all()
 	return render(request, 'app/shopping.html', {'items': items})
@@ -66,21 +84,3 @@ def bank(request):
 	if request.method == 'POST':
 		print 'Need to serve the bank form'
 	return render(request, 'app/bank.html', {'vendor': data})
-
-def user_login(request):
-	if request.method == 'POST':
-		username = request.POST.get('username')
-		password = request.POST.get('password')
-
-		user = authenticate(username=username, password=password)
-		if user:
-			if user.is_active:
-				login(request, user)
-				return HttpResponseRedirect('/set/')
-			else:
-				return HttpResponse('Your Set account is disabled')
-		else:
-			print "Invalid login details: {0}, {1}".format(username, password)
-			return HttpResponse('Invalid login credentials')
-	else:
-		return render(request, 'app/login.html', {})
