@@ -9,11 +9,6 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username
 
-class UserBalance(models.Model):
-    user = models.ForeignKey(User)
-    balance = models.DecimalField(max_digits=6, decimal_places=2)
-
-
 class Product(models.Model):
     name = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=6, decimal_places=2)
