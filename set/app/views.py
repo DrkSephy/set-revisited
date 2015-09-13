@@ -38,10 +38,12 @@ def user_login(request):
 	else:
 		return render(request, 'app/login.html', {})
 
+# Route to display all items available to be purchased
 def shopping(request):
 	items = Product.objects.all()
 	return render(request, 'app/shopping.html', {'items': items})
 
+# Route to display summary of transaction
 def checkout(request):
 	# TODO:
 	# 	Send back array of quantities via POST request.
