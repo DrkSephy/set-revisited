@@ -19,7 +19,7 @@
         <form class="form-signin" id="login_form" method="post" action="/set/bank/" enctype="multipart/form-data">
           {% csrf_token %}
           {% load bootstrap %}
-
+          {{summary}}
           <br>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Checkout?</button>
           <input type="hidden" name="submit" value="submit" />
