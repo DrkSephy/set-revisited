@@ -49,13 +49,18 @@ def checkout(request):
 	# 	Send back array of quantities via POST request.
 	#   The array index of each value will denote the item from the database
 	#   i.e: index 0 will correspond to item 0 with pk=0, pk=1, etc
-	items = {}
+	summary = []
 	if request.method == 'POST':
 		quantities = request.POST.getlist('quantity')
 		for value in quantities: 
 			if value != 0:
+				items = {}
 				item = Product.objects.all()[quantities.index(value)]
-				print item.name
+				items['name'] = item.name
+				items['price'] = float(item.price) * float(value)
+				items['quantity'] = value
+				summary.append(items)
+		print summary
 	return render(request, 'app/checkout.html', {'things': quantities})
 
 def bank(request):
