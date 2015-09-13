@@ -62,7 +62,7 @@ def checkout(request):
 				items['quantity'] = value
 				summary.append(items)
 		print summary
-	return render(request, 'app/checkout.html', {'things': quantities})
+	return render(request, 'app/checkout.html', {'summary': summary})
 
 def bank(request):
 	# TODO:
