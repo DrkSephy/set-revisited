@@ -57,7 +57,8 @@ def checkout(request):
 				items = {}
 				item = Product.objects.all()[quantities.index(value)]
 				items['name'] = item.name
-				items['price'] = float(item.price) * float(value)
+				price = float(item.price) * float(value)
+				items['price'] =  "%.2f" % price
 				items['quantity'] = value
 				summary.append(items)
 		print summary
