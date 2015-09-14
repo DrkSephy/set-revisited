@@ -16,7 +16,7 @@
 
 	<body>
     <div class="container text-center">
-        <form class="form-signin" id="login_form" method="post" action="/set/checkout/" enctype="multipart/form-data">
+        <form class="form-signin" id="login_form" method="post" action="/set/bank/" enctype="multipart/form-data">
           {% csrf_token %}
           {% load bootstrap %}
           {% for item in items %}
@@ -29,6 +29,7 @@
               {{ item }}
             {% endfor %}
           {% endif %}
+
           <br>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Checkout</button>
           <input type="hidden" name="submit" value="submit" />
