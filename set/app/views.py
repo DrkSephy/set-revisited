@@ -70,7 +70,6 @@ def bank(request):
 			if value != 0:
 				itemDetails = {}
 				item = Product.objects.all()[quantities.index(value)]
-				print item
 				itemDetails['name'] = item.name
 				price = float(item.price) * float(value)
 				itemDetails['price'] =  "%.2f" % price
@@ -79,11 +78,12 @@ def bank(request):
 	total = 0.0
 	for item in summary['items']:
 		total += float(item['price'])
-	summary['total'] = [{'total': total}]
+
+	summary['total'] = [{'total': "%.2f" % total}]
 
 	print summary
 
-	return render(request, 'app/bank.html', {'vendor': data})
+	return render(request, 'app/bank.html', {'vendor': summary})
 
 def transaction(request):
 	return HttpResponse('Display summary of transaction')
