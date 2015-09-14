@@ -76,7 +76,12 @@ def bank(request):
 				itemDetails['price'] =  "%.2f" % price
 				itemDetails['quantity'] = value
 				summary['items'].append(itemDetails)
-		print summary
+	total = 0.0
+	for item in summary['items']:
+		total += float(item['price'])
+	summary['total'] = [{'total': total}]
+
+	print summary
 	data = {}
 	data['callback'] = '/set/callback/'
 	data['price'] = 9.99
