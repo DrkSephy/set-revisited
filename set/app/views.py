@@ -62,18 +62,20 @@ def bank(request):
 	
 	# The callback will be a page that displays the vendor attributes
 	# in order to check whether transactions went through
-	summary = []
+	summary = {}
 	if request.method == 'POST':
 		quantities = request.POST.getlist('quantity')
+		summary['items'] = []
 		for value in quantities: 
 			if value != 0:
-				items = {}
+				itemDetails = {}
 				item = Product.objects.all()[quantities.index(value)]
-				items['name'] = item.name
+				print item
+				itemDetails['name'] = item.name
 				price = float(item.price) * float(value)
-				items['price'] =  "%.2f" % price
-				items['quantity'] = value
-				summary.append(items)
+				itemDetails['price'] =  "%.2f" % price
+				itemDetails['quantity'] = value
+				summary['items'].append(itemDetails)
 		print summary
 	data = {}
 	data['callback'] = '/set/callback/'
