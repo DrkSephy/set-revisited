@@ -86,4 +86,10 @@ def bank(request):
 	return render(request, 'app/bank.html', {'vendor': summary})
 
 def transaction(request):
+	if request.method == 'POST':
+		vendorName = request.POST.get('vendor name')
+	vendor = Vendor.objects.get(name=vendorName)
+	print vendor.name
+	print vendor.account
+
 	return HttpResponse('Display summary of transaction')
