@@ -43,27 +43,6 @@ def shopping(request):
 	items = Product.objects.all()
 	return render(request, 'app/shopping.html', {'items': items})
 
-# Route to display summary of transaction
-def checkout(request):
-	# TODO:
-	# 	Send back array of quantities via POST request.
-	#   The array index of each value will denote the item from the database
-	#   i.e: index 0 will correspond to item 0 with pk=0, pk=1, etc
-	summary = []
-	if request.method == 'POST':
-		quantities = request.POST.getlist('quantity')
-		for value in quantities: 
-			if value != 0:
-				items = {}
-				item = Product.objects.all()[quantities.index(value)]
-				items['name'] = item.name
-				price = float(item.price) * float(value)
-				items['price'] =  "%.2f" % price
-				items['quantity'] = value
-				summary.append(items)
-		print summary
-	return render(request, 'app/checkout.html', {'summary': summary})
-
 def bank(request):
 	# TODO:
 	#   Pass vendor information into form
@@ -77,7 +56,7 @@ def bank(request):
 	#     - Address 
 	#   Show Summary of transaction to take place
 	#     - Items that are being bought
-	#     - Quantities of each item
+	#     - Quantities of each items
 	#     - Description of each item
 	#     - Total price of items
 	
