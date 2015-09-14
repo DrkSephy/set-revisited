@@ -79,7 +79,7 @@ def bank(request):
 	for item in summary['items']:
 		total += float(item['price'])
 
-	summary['total'] = [{'total': "%.2f" % total}]
+	summary['total'] = "%.2f" % total
 
 	print summary
 
