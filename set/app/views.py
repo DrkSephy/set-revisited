@@ -89,3 +89,6 @@ def bank(request):
 	if request.method == 'POST':
 		print 'Need to serve the bank form'
 	return render(request, 'app/bank.html', {'vendor': data})
+
+def transaction(request):
+	return HttpResponse('Display summary of transaction')
