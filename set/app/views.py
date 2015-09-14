@@ -82,11 +82,7 @@ def bank(request):
 	summary['total'] = [{'total': total}]
 
 	print summary
-	data = {}
-	data['callback'] = '/set/callback/'
-	data['price'] = 9.99
-	if request.method == 'POST':
-		print 'Need to serve the bank form'
+
 	return render(request, 'app/bank.html', {'vendor': data})
 
 def transaction(request):
