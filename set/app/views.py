@@ -95,13 +95,11 @@ def transaction(request):
 	user = UserAccount.objects.get(name=userName)
 
 	if float(user.account) >= float(total):
-		print 'Yeah'
 		user.account = Decimal(user.account) - Decimal(total)
-		print user.account
 		user.save()
 		vendor.account += Decimal(total)
-		print vendor.account
 		vendor.save()
 
+	result = "%.2f was trasferred from %s's bank account into %s's bank account. %s now has %.2f left in their account, and %s has %.2f in their account" % (float(total), user.name, vendor.name, user.name, float(user.account), vendor.name, float(vendor.account))
 
-	return HttpResponse('Display summary of transaction')
+	return HttpResponse(result)
