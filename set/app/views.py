@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from app.forms import UserForm
 from django.contrib.auth import authenticate, login
 from app.models import Product, Vendor, UserAccount
+from decimal import *
 
 def register(request):
 	registered = False
@@ -89,12 +90,18 @@ def transaction(request):
 	if request.method == 'POST':
 		vendorName = request.POST.get('vendor name')
 		userName = request.POST.get('name')
+		total = request.POST.get('total price')
 	vendor = Vendor.objects.get(name=vendorName)
 	user = UserAccount.objects.get(name=userName)
-	print vendor.name
-	print vendor.account
-	print user.name
-	print user.account
+
+	if float(user.account) >= float(total):
+		print 'Yeah'
+		user.account = Decimal(user.account) - Decimal(total)
+		print user.account
+		user.save()
+		vendor.account += Decimal(total)
+		print vendor.account
+		vendor.save()
 
 
 	return HttpResponse('Display summary of transaction')
